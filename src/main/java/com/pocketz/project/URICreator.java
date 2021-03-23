@@ -2,44 +2,49 @@ package com.pocketz.project;
 
 public class URICreator {
  
-	final static String AK = ""; 
+	final static String AK = "&"; 
 	
 	final static String BASE_URI = "http://api.map.baidu.com/";
 	
-	String ansURI = "";
+	StringBuffer ansURI ;
 	
 	public URICreator clearURI() {
-		ansURI = "";
+		ansURI = new StringBuffer();
 		return this;
 	}
 	
 	public URICreator setType(int i ) {
 		if (i == 1 ) {
-			ansURI += (BASE_URI + "direction/v2/riding");
+			ansURI.append(BASE_URI)
+			.append("direction/v2/riding");
 			return this;
-		} else {
-			ansURI += (BASE_URI + "place/v2/search");
+		} else {			
+			ansURI.append(BASE_URI)
+			.append("place/v2/search");
 			return this;
 		}
 		
 	}
 	public URICreator setAttribute(String saparator,String name, String value) {
-		ansURI += (saparator + name + value);
+		ansURI.append(saparator)
+		.append(name)
+		.append(value);
 		return this;
 	}
 	
 	public URICreator setAk() {
-		ansURI += AK;
+		ansURI.append(AK);
 		return this;
 	}
 	
 	public URICreator setAk(String ak) {
-		ansURI += ("&" + ak);
+		ansURI.append("&")
+		.append(ak);
 		return this;
 	}
 	
 	public String getURI() {
-		return ansURI;
+		return ansURI.toString();
 	}
 
 }
