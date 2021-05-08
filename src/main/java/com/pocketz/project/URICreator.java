@@ -1,12 +1,11 @@
 package com.pocketz.project;
 
 public class URICreator {
- 
-	final static String AK = "&"; 
+	private static String AK = ""; 
 	
-	final static String BASE_URI = "http://api.map.baidu.com/";
+	private final static String BASE_URI = "http://api.map.baidu.com/";
 	
-	StringBuffer ansURI ;
+	private StringBuffer ansURI ;
 	
 	public URICreator clearURI() {
 		ansURI = new StringBuffer();
@@ -25,26 +24,27 @@ public class URICreator {
 		}
 		
 	}
+	public URICreator setAttribute(String name, String value) {
+		ansURI.append("&")
+		.append(name)
+		.append("=")
+		.append(value);
+		return this;
+	}
 	public URICreator setAttribute(String saparator,String name, String value) {
 		ansURI.append(saparator)
 		.append(name)
+		.append("=")
 		.append(value);
 		return this;
 	}
 	
-	public URICreator setAk() {
-		ansURI.append(AK);
-		return this;
-	}
-	
-	public URICreator setAk(String ak) {
-		ansURI.append("&")
-		.append(ak);
-		return this;
-	}
-	
 	public String getURI() {
+		ansURI.append(AK);
 		return ansURI.toString();
 	}
 
+	public static void setAk(String ak) {
+		URICreator.AK += "&ak="+ak;
+	}
 }

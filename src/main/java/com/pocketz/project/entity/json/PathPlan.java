@@ -1,21 +1,23 @@
-package com.pocketz.project;
+package com.pocketz.project.entity.json;
 
 import java.util.List;
 
 public class PathPlan {
-	public Result result;
-	class Result{
+	public int status;
+	public String message;
+	public PathPlanRes result;
+	public static class PathPlanRes{
 		public List<Route> routes;
 	}
 	
-	class Route{
+	public static class Route{
 		public int distance;
 		public int duration;
 		
 		public List<Step> steps;
 	}
 	
-	class Step{
+	public static class Step{
 		public int distance;
 		public int duration;
 		public String instructions;
@@ -26,11 +28,11 @@ public class PathPlan {
 		public StepDestinationLocation stepDestinationLocation;
 		
 	}
-	class StepOriginLocation{
+	public static class StepOriginLocation{
 		public double lng;
 		public double lat;
 	}
-	class StepDestinationLocation{
+	public static class StepDestinationLocation{
 		public double lng;
 		public double lat;
 	}
